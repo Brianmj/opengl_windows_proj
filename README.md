@@ -1,2 +1,2 @@
 # opengl_windows_proj
-Just sample template of opengl using visual studio
+Just a sample template for a opengl projects using visual studio.
