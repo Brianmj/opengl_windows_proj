@@ -89,10 +89,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Brianmj\Documents\Software\glew-2.1.0\include;$(SolutionDir)gl_windows/knu_2018/;C:\Users\Brianmj\Documents\Software\SDL2-2.0.9\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Brianmj\Documents\Software\glew-2.1.0\include;$(SolutionDir)gl_windows/knu_2018/;C:\Users\Brianmj\Documents\Software\SDL2-2.0.9\include;C:\Users\Brianmj\Documents\Software\SDL2_image-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\Brianmj\Documents\Software\glew-2.1.0\lib\Release\x64;C:\Users\Brianmj\Documents\Software\SDL2-2.0.9\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Brianmj\Documents\Software\glew-2.1.0\lib\Release\x64;C:\Users\Brianmj\Documents\Software\SDL2-2.0.9\lib\x64;C:\Users\Brianmj\Documents\Software\SDL2_image-2.0.4\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

@@ -10,13 +10,14 @@
 #define knu_image4_hpp
 
 #include <memory>
+#include <mutex>
 
 #ifdef __APPLE__
 #include <SDL2/SDL.h>
 #include <SDL2_image/SDL_image.h>
 #endif
 
-#ifdef WIN32
+#ifdef _WIN32
 #include <SDL_image.h>
 #pragma comment(lib, "sdl2_image.lib")
 #endif

@@ -369,7 +369,8 @@ namespace knu
             inline void unmap() {glUnmapBuffer(target);}
         };
         
-        enum class vao
+		// For now, to silence the warning, disable class vertex_array_object
+        /*enum class vao
         {
             vertex, vertex_texture, vertex_texture_normal, vertex_normal, vertex_color
         };
@@ -460,7 +461,7 @@ namespace knu
             {
                 glBindVertexArray(0);
             }
-        };
+        }; */ //class vao
         
         
     }
