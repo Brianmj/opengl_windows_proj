@@ -10,13 +10,14 @@
 #define knu_image4_hpp
 
 #include <memory>
+#include <mutex>
 
 #ifdef __APPLE__
 #include <SDL2/SDL.h>
 #include <SDL2_image/SDL_image.h>
 #endif
 
-#ifdef WIN32
+#ifdef _WIN32
 #include <SDL_image.h>
 #pragma comment(lib, "sdl2_image.lib")
 #endif
@@ -36,6 +37,7 @@ namespace knu
         
         class image
         {
+			std::string image_name;
             int width;
             int height;
             int bitsPerPixel;
@@ -58,6 +60,7 @@ namespace knu
                 // lock surface
                 SDL_LockSurface(surface.get());
                 
+				image_name = name_;
                 width = surface->w;
                 height = surface->h;
                 bitsPerPixel = surface->format->BitsPerPixel;
@@ -115,11 +118,12 @@ namespace knu
                 SDL_UnlockSurface(surface.get());
             }
             
-            int get_width() {return width;}
-            int get_height() {return height;}
-            unsigned int get_format() {return format;}
-            unsigned int get_internal_format() {return internalFormat;}
-            int get_size() {return imageSize;}
+			std::string get_image_name() const { return image_name; }
+            int get_width() const {return width;}
+            int get_height() const {return height;}
+            unsigned int get_format() const {return format;}
+            unsigned int get_internal_format() const {return internalFormat;}
+            int get_size() const {return imageSize;}
             unsigned char *get_data() { return imageData.get();}
         };
     }
