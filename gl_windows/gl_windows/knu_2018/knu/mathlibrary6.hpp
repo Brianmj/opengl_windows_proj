@@ -1245,6 +1245,32 @@ namespace knu {
 					elements[15] = p;
 				}
 
+				mat4(const vec4<T> &row0,
+					const vec4<T> &row1,
+					const vec4<T> &row2,
+					const vec4<T> &row3)
+				{
+					elements[0] = row0.x;
+					elements[1] = row0.y;
+					elements[2] = row0.z;
+					elements[3] = row0.w;
+
+					elements[4] = row1.x;
+					elements[5] = row1.y;
+					elements[6] = row1.z;
+					elements[7] = row1.w;
+
+					elements[8] = row2.x;
+					elements[9] = row2.y;
+					elements[10] = row2.z;
+					elements[11] = row2.w;
+
+					elements[12] = row3.x;
+					elements[13] = row3.y;
+					elements[14] = row3.z;
+					elements[15] = row3.w;
+				}
+
 				mat4(const mat4 &m)
 				{
 					std::copy(std::begin(m.elements), std::end(m.elements),
@@ -1995,6 +2021,36 @@ namespace knu {
 				float z_far)
 			{
 				return make_frustrum<float>(left, right, bottom, top, z_near, z_far);
+			}
+
+			// This is how you would use fov_perspective
+			/*const GLint perspective_location = 0, modelview_location = 4;
+			glUniformMatrix4fv(perspective_location, 1, false, perspective_matrix.data());
+
+			auto mt = matrix4f::translation_matrix(0.0f, 0.0f, -4.0f);
+			auto mr = matrix4f::rotation_y_matrix(-rotation_angle);
+			modelview_matrix = mr * mt;
+
+			glUniformMatrix4fv(modelview_location, 1, false, modelview_matrix.data());*/
+			inline mat4<float> fov_perspective(float fov_y_degrees,
+				float aspect_ratio, float z_near, float z_far)
+			{
+				float radians = degrees_to_radians<float>(fov_y_degrees) / 2.0f;
+				float f = 1.0f / tan(radians);
+
+				float a = 1.0f / f;
+				float b = f;
+				float c = (z_far + z_near) / (z_near - z_far);
+				float d = (2.0f * z_far * z_near) / (z_near - z_far);
+
+				knu::math::mat4<float> persp
+				{
+					a, 0.0f, 0.0f, 0.0f,
+					0.0f, b, 0.0f, 0.0f,
+					0.0f, 0.0f, c, -1.0f,
+					0.0f, 0.0f, d, 0.0f,
+				};
+				return persp;
 			}
 		} // namespace of v1
 
